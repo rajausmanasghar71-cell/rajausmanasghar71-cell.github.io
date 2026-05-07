@@ -112,3 +112,255 @@
             height: 100%;
             border: 3px solid;
             animation: cornerShine 4s infinite;
+        }
+        .corner-tl { top: 0; left: 0; }
+        .corner-tl::before { 
+            border-color: #ff006e; 
+            border-right: none; 
+            border-bottom: none; 
+            border-radius: 20px 0 0 0;
+            animation-delay: 0s;
+        }
+        .corner-tr { top: 0; right: 0; }
+        .corner-tr::before { 
+            border-color: #3a86ff; 
+            border-left: none; 
+            border-bottom: none; 
+            border-radius: 0 20px 0 0;
+            animation-delay: 1s;
+        }
+        .corner-bl { bottom: 0; left: 0; }
+        .corner-bl::before { 
+            border-color: #06ffa5; 
+            border-right: none; 
+            border-top: none; 
+            border-radius: 0 0 0 20px;
+            animation-delay: 2s;
+        }
+        .corner-br { bottom: 0; right: 0; }
+        .corner-br::before { 
+            border-color: #ffbe0b; 
+            border-left: none; 
+            border-top: none; 
+            border-radius: 0 0 20px 0;
+            animation-delay: 3s;
+        }
+        
+        @keyframes cornerShine {
+            0%, 100% { 
+                box-shadow: 0 0 10px currentColor; 
+                opacity: 0.6; 
+            }
+            50% { 
+                box-shadow: 0 0 30px currentColor, 0 0 50px currentColor; 
+                opacity: 1; 
+            }
+        }
+        
+        /* 2. Profile Pic Unique Shine */
+        .profile-wrapper {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 20px;
+        }
+        .profile-img { 
+            width: 140px; 
+            height: 140px; 
+            border-radius: 50%; 
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            border: 3px solid rgba(255,255,255,0.2);
+            object-fit: cover;
+            object-position: center top;
+            z-index: 2;
+        }
+        .profile-glow {
+            position: absolute;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, #ff006e, #8338ec, #3a86ff, #06ffa5, #ffbe0b, #ff006e);
+            animation: spinGlow 3s linear infinite, pulseGlow 2s ease-in-out infinite;
+            z-index: 1;
+        }
+        
+        @keyframes spinGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes pulseGlow {
+            0%, 100% { filter: blur(8px) brightness(1); }
+            50% { filter: blur(12px) brightness(1.5); }
+        }
+        
+        h1 { 
+            text-align: center; 
+            color: #fff; 
+            margin-bottom: 10px; 
+            font-size: 32px; 
+            text-shadow: 0 0 20px rgba(58, 134, 255, 0.8); 
+        } 
+        .title { text-align: center; color: #8ecae6; margin-bottom: 30px; font-size: 15px; } 
+        
+        .info { margin: 25px 0; } 
+        .info-item { 
+            display: flex; 
+            padding: 14px; 
+            margin: 12px 0;
+            background: rgba(0, 30, 60, 0.6);
+            border-radius: 12px;
+            border-right: 3px solid #3a86ff;
+            transition: 0.3s;
+        } 
+        .info-item:hover { 
+            background: rgba(0, 30, 60, 0.9);
+            transform: translateX(-5px);
+            box-shadow: 0 0 20px rgba(58, 134, 255, 0.4);
+        }
+        .label { font-weight: bold; color: #90e0ef; min-width: 80px; font-size: 14px; } 
+        .value { 
+            direction: ltr; 
+            text-align: left; 
+            flex: 1; 
+            color: #caf0f8; 
+            word-break: break-all;
+            font-size: 14px;
+        }
+        
+        .social-links { 
+            display: flex; 
+            justify-content: center; 
+            gap: 15px; 
+            margin-top: 35px; 
+            flex-wrap: wrap;
+        } 
+        
+        .social-btn { 
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white; 
+            text-decoration: none; 
+            font-size: 24px;
+            transition: 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+            border: 2px solid rgba(255,255,255,0.1);
+        } 
+        
+        .social-btn:hover { 
+            transform: translateY(-8px) scale(1.15);
+            box-shadow: 0 0 30px currentColor;
+        }
+        
+        .facebook { background: linear-gradient(135deg, #1877f2, #0d5bdd); }
+        .instagram { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+        .whatsapp { background: linear-gradient(135deg, #25d366, #128c7e); }
+        .tiktok { background: #000000; }
+        .snapchat { background: linear-gradient(135deg, #fffc00, #fffc00); color: #000; }
+        
+        .footer { text-align: center; margin-top: 25px; color: #4cc9f0; font-size: 13px; }
+        
+        @media (max-width: 480px) {
+            .card { padding: 30px 15px; }
+            h1 { font-size: 28px; }
+            .moon { width: 70px; height: 70px; left: 20px; top: 30px; }
+            .info-item { padding: 12px; }
+            .label { min-width: 70px; font-size: 13px; }
+            .value { font-size: 13px; }
+            .profile-wrapper { width: 140px; height: 140px; }
+            .profile-img { width: 120px; height: 120px; }
+            .profile-glow { width: 140px; height: 140px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="moon"></div>
+    <div class="stars" id="stars"></div>
+    
+    <div class="sea">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <!-- Multi-Color Corners -->
+            <div class="corner corner-tl"></div>
+            <div class="corner corner-tr"></div>
+            <div class="corner corner-bl"></div>
+            <div class="corner corner-br"></div>
+            
+            <!-- Profile Pic Unique Shine -->
+            <div class="profile-wrapper">
+                <div class="profile-glow"></div>
+                <img src="profile.jpg" alt="Raja Usman Asghar" class="profile-img">
+            </div>
+            
+            <h1>Raja Usman Asghar</h1>
+            <p class="title">Student | Web Developer | Mirpur Azad Kashmir</p>
+            
+            <div class="info">
+                <div class="info-item">
+                    <span class="label">نام:</span>
+                    <span class="value">Raja Usman Asghar</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">عمر:</span>
+                    <span class="value">26 Years</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">شہر:</span>
+                    <span class="value">Mirpur, Azad Kashmir</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">ای میل:</span>
+                    <span class="value">rajausmanasghar71@gmail.com</span>
+                </div>
+            </div>
+            
+            <div class="social-links">
+                <a href="https://www.facebook.com/rajausmanasghar.736" target="_blank" class="social-btn facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/rajausman_736?igsh=MWdqamduanhncTlzbw==" target="_blank" class="social-btn instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://wa.me/923427126736" target="_blank" class="social-btn whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://www.tiktok.com/@rajausman_736?_r=1&_t=ZS-969iDSSW7lN" target="_blank" class="social-btn tiktok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://www.snapchat.com/add/rajausman_736?share_id=oMNTOHNwMek&locale=en-PK" target="_blank" class="social-btn snapchat">
+                    <i class="fab fa-snapchat-ghost"></i>
+                </a>
+            </div>
+            
+            <div class="footer">
+                © 2026 Raja Usman Asghar | All Rights Reserved
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const starsContainer = document.getElementById('stars');
+        for(let i = 0; i < 80; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            const size = Math.random() * 4 + 2;
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starsContainer.appendChild(star);
+        }
+    </script>
+</body>
+</html>
