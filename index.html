@@ -19,7 +19,6 @@
             position: relative;
         }
 
-        /* Vote Ko Izzat Do Audio Button */
         .vote-btn {
             position: fixed;
             top: 20px;
@@ -34,14 +33,12 @@
             cursor: pointer;
             z-index: 998;
             animation: pulseBtn 1.5s infinite;
-            box-shadow: 0 0 20px rgba(0, 100, 0, 0.8);
         }
         @keyframes pulseBtn {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 rgba(0, 100, 0, 0.7); }
+            0%, 100% { transform: scale(1); }
             50% { transform: scale(1.1); box-shadow: 0 0 0 12px rgba(0, 100, 0, 0); }
         }
 
-        /* مریم نواز منصوبے Background */
         body::before {
             content: '';
             position: fixed;
@@ -49,51 +46,45 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
-                url('https://i.ibb.co/0j3P6Pz/maryam-laptop.jpg') left top/50% 50% no-repeat,
-                url('https://i.ibb.co/7QpK9Yz/maryam-clinic.jpg') right top/50% 50% no-repeat,
-                url('https://i.ibb.co/3k5H2Vn/maryam-school.jpg') left bottom/50% 50% no-repeat,
-                url('https://i.ibb.co/0j3P6Pz/maryam-road.jpg') right bottom/50% 50% no-repeat;
+            background: url('https://i.imgur.com/ZR8Q2mK.jpg') center/cover no-repeat;
             filter: blur(6px) brightness(0.2);
             z-index: 0;
         }
         
-        /* پاکستان + آزاد کشمیر جھنڈے سائیڈ پر */
         .pakistan-flag {
             position: fixed;
-            left: 0;
+            left: 10px;
             top: 50%;
             transform: translateY(-50%);
-            width: 120px;
-            height: 80px;
-            background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Flag_of_Pakistan.svg/1200px-Flag_of_Pakistan.svg.png') center/contain no-repeat;
+            width: 100px;
+            height: 70px;
+            background: url('https://flagcdn.com/w320/pk.png') center/contain no-repeat;
             animation: waveLeft 3s ease-in-out infinite;
             z-index: 1;
-            opacity: 0.7;
+            opacity: 0.8;
         }
         .kashmir-flag {
             position: fixed;
-            right: 0;
+            right: 10px;
             top: 50%;
             transform: translateY(-50%);
-            width: 120px;
-            height: 80px;
-            background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Flag_of_Azad_Kashmir.svg/1200px-Flag_of_Azad_Kashmir.svg.png') center/contain no-repeat;
+            width: 100px;
+            height: 70px;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/9/9b/Flag_of_Azad_Kashmir.svg') center/contain no-repeat;
             animation: waveRight 3s ease-in-out infinite;
             z-index: 1;
-            opacity: 0.7;
+            opacity: 0.8;
         }
         
         @keyframes waveLeft {
-            0%, 100% { transform: translateY(-50%) rotate(-5deg) scale(1); }
-            50% { transform: translateY(-60%) rotate(5deg) scale(1.05); }
+            0%, 100% { transform: translateY(-50%) rotate(-5deg); }
+            50% { transform: translateY(-60%) rotate(5deg); }
         }
         @keyframes waveRight {
-            0%, 100% { transform: translateY(-50%) rotate(5deg) scale(1); }
-            50% { transform: translateY(-60%) rotate(-5deg) scale(1.05); }
+            0%, 100% { transform: translateY(-50%) rotate(5deg); }
+            50% { transform: translateY(-60%) rotate(-5deg); }
         }
 
-        /* Loading Animation - Original Roaring Lion */
         .loader {
             position: fixed;
             top: 0;
@@ -111,7 +102,7 @@
         .lion-roar {
             width: 200px;
             height: 200px;
-            background: url('https://media.giphy.com/media/3o7aD2d7hy9ktXNDP2/giphy.gif') center/contain no-repeat;
+            background: url('https://media.tenor.com/Y8XQzKQmWvEAAAAC/lion-roar.gif') center/contain no-repeat;
             filter: drop-shadow(0 0 30px #ff6600);
         }
         .loader-text {
@@ -122,12 +113,8 @@
             text-shadow: 0 0 15px #00ff00;
             animation: blinkText 1s infinite;
         }
-        @keyframes blinkText {
-            50% { opacity: 0.5; }
-        }
-        @keyframes fadeOut {
-            to { opacity: 0; visibility: hidden; }
-        }
+        @keyframes blinkText { 50% { opacity: 0.5; } }
+        @keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
         
         .container { max-width: 750px; margin: 40px auto; position: relative; z-index: 10; } 
         
@@ -156,17 +143,20 @@
             border-radius: 50%;
             border: 3px solid #006400;
             object-fit: cover;
+            object-position: top;
             box-shadow: 0 0 20px rgba(0, 100, 0, 0.8);
+            background: #222;
         }
         
         .roaring-lion {
             position: absolute;
             top: 15px;
             right: 15px;
-            width: 65px;
-            height: 65px;
-            background: url('https://media.giphy.com/media/3o7aD2d7hy9ktXNDP2/giphy.gif') center/contain no-repeat;
+            width: 70px;
+            height: 70px;
+            background: url('https://media.tenor.com/Y8XQzKQmWvEAAAAC/lion-roar.gif') center/contain no-repeat;
             z-index: 3;
+            filter: drop-shadow(0 0 10px #ff6600);
         }
         
         .profile-wrapper {
@@ -228,9 +218,7 @@
             content: '|';
             animation: blink 1s infinite;
         }
-        @keyframes blink {
-            50% { opacity: 0; }
-        }
+        @keyframes blink { 50% { opacity: 0; } }
         
         .title { text-align: center; color: #8ecae6; margin-bottom: 30px; font-size: 15px; position: relative; z-index: 2; } 
         
@@ -248,7 +236,7 @@
             width: 90px;
             height: 90px;
             margin: 0 auto 10px;
-            background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Pakistan_Muslim_League_%28N%29_logo.svg/200px-Pakistan_Muslim_League_%28N%29_logo.svg.png') center/contain no-repeat;
+            background: url('https://i.imgur.com/L1kqZ9j.png') center/contain no-repeat;
         }
         .flags {
             display: flex;
@@ -261,24 +249,18 @@
             height: 35px;
             animation: waveFlag 2s ease-in-out infinite;
         }
-        .pak-flag {
-            background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Flag_of_Pakistan.svg/1200px-Flag_of_Pakistan.svg.png') center/contain no-repeat;
-        }
-        .kashmir-flag-small {
-            background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Flag_of_Azad_Kashmir.svg/1200px-Flag_of_Azad_Kashmir.svg.png') center/contain no-repeat;
-        }
-        .pmln-flag {
-            background: url('https://i.ibb.co/7QpK9Yz/pmln-flag.png') center/contain no-repeat;
-        }
+        .pak-flag { background: url('https://flagcdn.com/w80/pk.png') center/contain no-repeat; }
+        .kashmir-flag-small { background: url('https://upload.wikimedia.org/wikipedia/commons/9/9b/Flag_of_Azad_Kashmir.svg') center/contain no-repeat; }
+        .pmln-flag { background: url('https://i.imgur.com/L1kqZ9j.png') center/contain no-repeat; }
         @keyframes waveFlag {
             0%, 100% { transform: rotate(-5deg); }
             50% { transform: rotate(5deg); }
         }
         .tiger {
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             margin: 10px auto;
-            background: url('https://media.giphy.com/media/l0HlH7a9J7o1mV96Y/giphy.gif') center/contain no-repeat;
+            background: url('https://media.tenor.com/QZ9yqj9YQqEAAAAC/tiger-roar.gif') center/contain no-repeat;
         }
         
         .info { margin: 25px 0; position: relative; z-index: 2; } 
@@ -340,9 +322,7 @@
             cursor: pointer;
             transition: 0.3s;
         }
-        .form-btn:active {
-            transform: scale(0.95);
-        }
+        .form-btn:active { transform: scale(0.95); }
         
         .social-links { 
             display: flex; 
@@ -368,9 +348,7 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.6);
             border: 2px solid rgba(255,255,255,0.1);
         } 
-        .social-btn:active {
-            animation: btnBlast 0.3s;
-        }
+        .social-btn:active { animation: btnBlast 0.3s; }
         @keyframes btnBlast {
             0% { transform: scale(1); }
             50% { transform: scale(0.8); }
@@ -415,8 +393,8 @@
         @media (max-width: 480px) {
             .card { padding: 30px 15px; }
             h1 { font-size: 26px; }
-            .leader-img { width: 65px; height: 65px; }
-            .roaring-lion { width: 50px; height: 50px; }
+            .leader-img { width: 70px; height: 70px; }
+            .roaring-lion { width: 55px; height: 55px; }
             .pakistan-flag, .kashmir-flag { width: 80px; height: 50px; }
             .lion-roar { width: 150px; height: 150px; }
             .info-item { padding: 12px; }
@@ -429,32 +407,27 @@
     </style>
 </head>
 <body>
-    <!-- Vote Ko Izzat Do Audio Button -->
     <button class="vote-btn" onclick="playVoteSlogan()">🔊</button>
     <audio id="voteAudio">
         <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
     </audio>
 
-    <!-- Loading Animation - Original Roaring Lion -->
     <div class="loader">
         <div class="lion-roar"></div>
         <p class="loader-text">PMLN Youth Wing Loading...</p>
     </div>
 
-    <!-- پاکستان + کشمیر جھنڈے سائیڈوں پر -->
     <div class="pakistan-flag"></div>
     <div class="kashmir-flag"></div>
 
     <div class="container">
         <div class="card">
-            <!-- قائدین کی فوٹو -->
             <div class="leaders-row">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Nawaz_Sharif_in_2015.jpg/200px-Nawaz_Sharif_in_2015.jpg" alt="Nawaz Sharif" class="leader-img">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Shehbaz_Sharif_in_2022.jpg/200px-Shehbaz_Sharif_in_2022.jpg" alt="Shehbaz Sharif" class="leader-img">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Maryam_Nawaz_in_2016.jpg/200px-Maryam_Nawaz_in_2016.jpg" alt="Maryam Nawaz" class="leader-img">
+                <img src="https://i.imgur.com/mQzKQmW.jpg" alt="Maryam Nawaz" class="leader-img">
+                <img src="https://i.imgur.com/nQzKQmW.jpg" alt="Shehbaz Sharif" class="leader-img">
+                <img src="https://i.imgur.com/pQzKQmW.jpg" alt="Nawaz Sharif" class="leader-img">
             </div>
             
-            <!-- 3D Roaring Lion -->
             <div class="roaring-lion"></div>
             
             <div class="profile-wrapper">
@@ -465,7 +438,6 @@
             <h1 id="typed-name"></h1>
             <p class="title">PMLN | Youth Wing | Mirpur Azad Kashmir</p>
             
-            <!-- PMLN Section -->
             <div class="pmln-section">
                 <h3 style="color: #90e0ef; margin-bottom: 10px;">پاکستان مسلم لیگ ن</h3>
                 <div class="pmln-logo"></div>
@@ -529,7 +501,6 @@
                 </a>
             </div>
             
-            <!-- Website نیچے -->
             <div class="website-footer">
                 <a href="https://pmln.org" target="_blank">Official Website: pmln.org</a>
             </div>
@@ -541,7 +512,6 @@
     </div>
 
     <script>
-        // Typing Effect
         const nameText = "Raja Usman Asghar";
         let i = 0;
         const typedName = document.getElementById('typed-name');
@@ -558,7 +528,116 @@
         }
         setTimeout(typeWriter, 3200);
 
-        // Vote Ko Izzat Do Audio
+        function playVoteSlogan() {
+            const audio = document.getElementById('voteAudio');
+            audio.play();
+            navigator.vibrate(200);
+        }
+    </script>
+</bo                <img src="https://i.imgur.com/nQzKQmW.jpg" alt="Shehbaz Sharif" class="leader-img">
+                <img src="https://i.imgur.com/pQzKQmW.jpg" alt="Nawaz Sharif" class="leader-img">
+            </div>
+            
+            <div class="roaring-lion"></div>
+            
+            <div class="profile-wrapper">
+                <div class="profile-glow"></div>
+                <img src="profile.jpg" alt="Raja Usman Asghar" class="profile-img">
+            </div>
+            
+            <h1 id="typed-name"></h1>
+            <p class="title">PMLN | Youth Wing | Mirpur Azad Kashmir</p>
+            
+            <div class="pmln-section">
+                <h3 style="color: #90e0ef; margin-bottom: 10px;">پاکستان مسلم لیگ ن</h3>
+                <div class="pmln-logo"></div>
+                <div class="flags">
+                    <div class="flag-img pak-flag"></div>
+                    <div class="flag-img pmln-flag"></div>
+                    <div class="flag-img kashmir-flag-small"></div>
+                </div>
+                <div class="tiger"></div>
+            </div>
+            
+            <div class="info">
+                <div class="info-item">
+                    <span class="label">نام:</span>
+                    <span class="value">Raja Usman Asghar</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">شہر:</span>
+                    <span class="value">Mirpur, Azad Kashmir</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">فون:</span>
+                    <span class="value">03107387329</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">ای میل:</span>
+                    <span class="value">rajausmanasghar71@gmail.com</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">پارٹی:</span>
+                    <span class="value">PMLN - پاکستان مسلم لیگ ن</span>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h3>رابطہ کریں</h3>
+                <input type="text" class="form-input" placeholder="آپ کا نام">
+                <input type="email" class="form-input" placeholder="ای میل">
+                <textarea class="form-input" rows="3" placeholder="پیغام"></textarea>
+                <button class="form-btn" onclick="alert('شکریہ! جلد رابطہ کریں گے')">بھیجیں</button>
+            </div>
+            
+            <div class="social-links">
+                <a href="https://www.facebook.com/rajausmanasghar.736" target="_blank" class="social-btn facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/rajausman_736?igsh=MWdqamduanhncTlzbw==" target="_blank" class="social-btn instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://wa.me/923427126736" target="_blank" class="social-btn whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://www.tiktok.com/@rajausman_736?_r=1&_t=ZS-969iDSSW7lN" target="_blank" class="social-btn tiktok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://www.snapchat.com/add/rajausman_736?share_id=oMNTOHNwMek&locale=en-PK" target="_blank" class="social-btn snapchat">
+                    <i class="fab fa-snapchat-ghost"></i>
+                </a>
+                <a href="https://pmln.org" target="_blank" class="social-btn pmln">
+                    🐅
+                </a>
+            </div>
+            
+            <div class="website-footer">
+                <a href="https://pmln.org" target="_blank">Official Website: pmln.org</a>
+            </div>
+            
+            <div class="footer">
+                © 2026 Raja Usman Asghar | PMLN Youth Wing | All Rights Reserved
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const nameText = "Raja Usman Asghar";
+        let i = 0;
+        const typedName = document.getElementById('typed-name');
+        typedName.classList.add('typing');
+        
+        function typeWriter() {
+            if (i < nameText.length) {
+                typedName.textContent += nameText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 150);
+            } else {
+                typedName.classList.remove('typing');
+            }
+        }
+        setTimeout(typeWriter, 3200);
+
         function playVoteSlogan() {
             const audio = document.getElementById('voteAudio');
             audio.play();
