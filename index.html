@@ -7,642 +7,94 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; } 
-        
         body { 
-            font-family: 'Noto Nastaliq Urdu', Arial, sans-serif; 
-            color: #e2e8f0; 
-            line-height: 1.8; 
-            padding: 20px;
-            min-height: 100vh;
-            background: #0a0a1a;
-            overflow-x: hidden;
-            position: relative;
+            font-family: 'Noto Nastaliq Urdu', Arial, sans-serif; color: #e2e8f0; line-height: 1.8; padding: 20px;
+            min-height: 100vh; background: #0a0a1a; overflow-x: hidden; position: relative;
         }
-
         .vote-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #006400;
-            color: white;
-            border: 2px solid #fff;
-            border-radius: 50%;
-            width: 55px;
-            height: 55px;
-            font-size: 22px;
-            cursor: pointer;
-            z-index: 998;
-            animation: pulseBtn 1.5s infinite;
+            position: fixed; top: 20px; right: 20px; background: #006400; color: white;
+            border: 2px solid #fff; border-radius: 50%; width: 55px; height: 55px; font-size: 22px;
+            cursor: pointer; z-index: 998; animation: pulseBtn 1.5s infinite;
         }
-        @keyframes pulseBtn {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); box-shadow: 0 0 0 12px rgba(0, 100, 0, 0); }
-        }
-
+        @keyframes pulseBtn { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); box-shadow: 0 0 0 12px rgba(0, 100, 0, 0); } }
         body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://i.imgur.com/ZR8Q2mK.jpg') center/cover no-repeat;
-            filter: blur(6px) brightness(0.2);
-            z-index: 0;
+            content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #0a0a1a; z-index: 0;
         }
-        
         .pakistan-flag {
-            position: fixed;
-            left: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 100px;
-            height: 70px;
-            background: url('https://flagcdn.com/w320/pk.png') center/contain no-repeat;
-            animation: waveLeft 3s ease-in-out infinite;
-            z-index: 1;
-            opacity: 0.8;
+            position: fixed; left: 10px; top: 50%; transform: translateY(-50%);
+            width: 100px; height: 70px; 
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDgwMCI+PHJlY3QgZmlsbD0iIzAxNDYzZiIgd2lkdGg9IjEyMDAiIGhlaWdodD0iODAwIi8+PHJlY3QgZmlsbD0iI2ZmZiIgeD0iMCIgeT0iMCIgd2lkdGg9IjMwMCIgaGVpZ2h0PSI4MDAiLz48Y2lyY2xlIGZpbGw9IiNmZmYiIGN4PSI3MjAiIGN5PSI0MDAiIHI9IjI0MCIvPjxjaXJjbGUgZmlsbD0iIzAxNDYzZiIgY3g9Ijc3MCIgY3k9IjQwMCIgcj0iMjEwIi8+PHBhdGggZmlsbD0iI2ZmZiIgZD0ibTcyMCAyMDBsNDAgMTIwLTEwMCAwIDEwMCAwLTYwIDgweiIvPjwvc3ZnPg==') center/contain no-repeat;
+            animation: waveLeft 3s ease-in-out infinite; z-index: 1; opacity: 0.8;
         }
         .kashmir-flag {
-            position: fixed;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 100px;
-            height: 70px;
-            background: url('https://upload.wikimedia.org/wikipedia/commons/9/9b/Flag_of_Azad_Kashmir.svg') center/contain no-repeat;
-            animation: waveRight 3s ease-in-out infinite;
-            z-index: 1;
-            opacity: 0.8;
+            position: fixed; right: 10px; top: 50%; transform: translateY(-50%);
+            width: 100px; height: 70px; 
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYwMCI+PHJlY3QgZmlsbD0iIzA4OGQwOCIgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjAwIi8+PHJlY3QgZmlsbD0iI2ZmZiIgeD0iMCIgeT0iMCIgd2lkdGg9IjMwMCIgaGVpZ2h0PSI2MDAiLz48cmVjdCBmaWxsPSIjZmYwIiB4PSIwIiB5PSIwIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIvPjwvc3ZnPg==') center/contain no-repeat;
+            animation: waveRight 3s ease-in-out infinite; z-index: 1; opacity: 0.8;
         }
-        
-        @keyframes waveLeft {
-            0%, 100% { transform: translateY(-50%) rotate(-5deg); }
-            50% { transform: translateY(-60%) rotate(5deg); }
-        }
-        @keyframes waveRight {
-            0%, 100% { transform: translateY(-50%) rotate(5deg); }
-            50% { transform: translateY(-60%) rotate(-5deg); }
-        }
-
+        @keyframes waveLeft { 0%, 100% { transform: translateY(-50%) rotate(-5deg); } 50% { transform: translateY(-60%) rotate(5deg); } }
+        @keyframes waveRight { 0%, 100% { transform: translateY(-50%) rotate(5deg); } 50% { transform: translateY(-60%) rotate(-5deg); } }
         .loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #000;
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999;
+            display: flex; align-items: center; justify-content: center; flex-direction: column;
             animation: fadeOut 0.5s 3s forwards;
         }
         .lion-roar {
-            width: 200px;
-            height: 200px;
-            background: url('https://media.tenor.com/Y8XQzKQmWvEAAAAC/lion-roar.gif') center/contain no-repeat;
+            width: 200px; height: 200px; 
+            background: url('data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKp8QgAAIfkECQoAAAAsAAAAABAAEAAAAzAAuKxLL9Ahc4JihBUYd0oKwQOV3FBMPEUAy2kR4ME4OdEwMsijMZ6IQAh+QQJCgAAACwAAAAAEAAQAAADMgi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKp8QgAAIfkECQoAAAAsAAAAABAAEAAAAzAAuKxLL9Ahc4JihBUYd0oKwQOV3FBMPEUAy2kR4ME4OdEwMsijMZ6IQAh+QQJCgAAACwAAAAAEAAQAAADMgi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAA7') center/contain no-repeat;
             filter: drop-shadow(0 0 30px #ff6600);
         }
         .loader-text {
-            color: #00ff00;
-            margin-top: 20px;
-            font-size: 22px;
-            font-weight: bold;
-            text-shadow: 0 0 15px #00ff00;
-            animation: blinkText 1s infinite;
+            color: #00ff00; margin-top: 20px; font-size: 22px; font-weight: bold;
+            text-shadow: 0 0 15px #00ff00; animation: blinkText 1s infinite;
         }
         @keyframes blinkText { 50% { opacity: 0.5; } }
         @keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
-        
         .container { max-width: 750px; margin: 40px auto; position: relative; z-index: 10; } 
-        
         .card { 
-            background: rgba(5, 10, 25, 0.94); 
-            backdrop-filter: blur(20px);
-            border-radius: 20px; 
-            padding: 40px 25px; 
-            box-shadow: 0 15px 50px rgba(0,0,0,0.9); 
-            position: relative;
-            overflow: hidden;
-            border: 3px solid #006400;
+            background: rgba(5, 10, 25, 0.94); backdrop-filter: blur(20px); border-radius: 20px; 
+            padding: 40px 25px; box-shadow: 0 15px 50px rgba(0,0,0,0.9); position: relative;
+            overflow: hidden; border: 3px solid #006400;
         }
-        
         .leaders-row {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 2;
+            display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; position: relative; z-index: 2;
         }
         .leader-img {
-            width: 85px;
-            height: 85px;
-            border-radius: 50%;
-            border: 3px solid #006400;
-            object-fit: cover;
-            object-position: top;
-            box-shadow: 0 0 20px rgba(0, 100, 0, 0.8);
-            background: #222;
+            width: 85px; height: 85px; border-radius: 50%; border: 3px solid #006400;
+            object-fit: cover; object-position: top; box-shadow: 0 0 20px rgba(0, 100, 0, 0.8); background: #222;
         }
-        
         .roaring-lion {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            width: 70px;
-            height: 70px;
-            background: url('https://media.tenor.com/Y8XQzKQmWvEAAAAC/lion-roar.gif') center/contain no-repeat;
-            z-index: 3;
-            filter: drop-shadow(0 0 10px #ff6600);
+            position: absolute; top: 15px; right: 15px; width: 70px; height: 70px;
+            background: url('data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKp8QgAAIfkECQoAAAAsAAAAABAAEAAAAzAAuKxLL9Ahc4JihBUYd0oKwQOV3FBMPEUAy2kR4ME4OdEwMsijMZ6IQAh+QQJCgAAACwAAAAAEAAQAAADMgi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKp8QgAAIfkECQoAAAAsAAAAABAAEAAAAzAAuKxLL9Ahc4JihBUYd0oKwQOV3FBMPEUAy2kR4ME4OdEwMsijMZ6IQAh+QQJCgAAACwAAAAAEAAQAAADMgi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAA7') center/contain no-repeat;
+            z-index: 3; filter: drop-shadow(0 0 10px #ff6600);
         }
-        
-        .profile-wrapper {
-            position: relative;
-            width: 160px;
-            height: 160px;
-            margin: 0 auto 20px;
-            z-index: 2;
-        }
+        .profile-wrapper { position: relative; width: 160px; height: 160px; margin: 0 auto 20px; z-index: 2; }
         .profile-img { 
-            width: 140px; 
-            height: 140px; 
-            border-radius: 50%; 
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            border: 3px solid #006400;
-            object-fit: cover;
-            object-position: center top;
-            z-index: 2;
+            width: 140px; height: 140px; border-radius: 50%; position: absolute; top: 10px; left: 10px;
+            border: 3px solid #006400; object-fit: cover; object-position: center top; z-index: 2;
         }
-        
         .profile-glow {
-            position: absolute;
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
+            position: absolute; width: 160px; height: 160px; border-radius: 50%;
             background: conic-gradient(from 0deg, #ff0000, #ff0000, #0066ff, #0066ff, #ff0000);
-            animation: spinGlow 2s linear infinite, pulseGlow 1.5s ease-in-out infinite;
-            z-index: 1;
+            animation: spinGlow 2s linear infinite, pulseGlow 1.5s ease-in-out infinite; z-index: 1;
         }
-        
-        @keyframes spinGlow {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        @keyframes spinGlow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         @keyframes pulseGlow {
-            0%, 100% { 
-                filter: blur(10px) brightness(1.2); 
-                box-shadow: 0 0 40px #ff0000, 0 0 60px #0066ff;
-            }
-            50% { 
-                filter: blur(15px) brightness(1.8); 
-                box-shadow: 0 0 60px #ff0000, 0 0 80px #0066ff;
-            }
+            0%, 100% { filter: blur(10px) brightness(1.2); box-shadow: 0 0 40px #ff0000, 0 0 60px #0066ff; }
+            50% { filter: blur(15px) brightness(1.8); box-shadow: 0 0 60px #ff0000, 0 0 80px #0066ff; }
         }
-        
         h1 { 
-            text-align: center; 
-            color: #fff; 
-            margin-bottom: 10px; 
-            font-size: 32px; 
-            text-shadow: 0 0 20px rgba(0, 100, 0, 0.8);
-            min-height: 45px;
-            z-index: 2;
-            position: relative;
+            text-align: center; color: #fff; margin-bottom: 10px; font-size: 32px; 
+            text-shadow: 0 0 20px rgba(0, 100, 0, 0.8); min-height: 45px; z-index: 2; position: relative;
         } 
-        .typing::after {
-            content: '|';
-            animation: blink 1s infinite;
-        }
+        .typing::after { content: '|'; animation: blink 1s infinite; }
         @keyframes blink { 50% { opacity: 0; } }
-        
         .title { text-align: center; color: #8ecae6; margin-bottom: 30px; font-size: 15px; position: relative; z-index: 2; } 
-        
         .pmln-section {
-            background: rgba(0, 100, 0, 0.5);
-            border: 2px solid #006400;
-            border-radius: 15px;
-            padding: 20px;
-            margin: 25px 0;
-            text-align: center;
-            position: relative;
-            z-index: 2;
+            background: rgba(0, 100, 0, 0.5); border: 2px solid #006400; border-radius: 15px;
+            padding: 20px; margin: 25px 0; text-align: center; position: relative; z-index: 2;
         }
         .pmln-logo {
-            width: 90px;
-            height: 90px;
-            margin: 0 auto 10px;
-            background: url('https://i.imgur.com/L1kqZ9j.png') center/contain no-repeat;
-        }
-        .flags {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin: 15px 0;
-        }
-        .flag-img {
-            width: 50px;
-            height: 35px;
-            animation: waveFlag 2s ease-in-out infinite;
-        }
-        .pak-flag { background: url('https://flagcdn.com/w80/pk.png') center/contain no-repeat; }
-        .kashmir-flag-small { background: url('https://upload.wikimedia.org/wikipedia/commons/9/9b/Flag_of_Azad_Kashmir.svg') center/contain no-repeat; }
-        .pmln-flag { background: url('https://i.imgur.com/L1kqZ9j.png') center/contain no-repeat; }
-        @keyframes waveFlag {
-            0%, 100% { transform: rotate(-5deg); }
-            50% { transform: rotate(5deg); }
-        }
-        .tiger {
-            width: 80px;
-            height: 80px;
-            margin: 10px auto;
-            background: url('https://media.tenor.com/QZ9yqj9YQqEAAAAC/tiger-roar.gif') center/contain no-repeat;
-        }
-        
-        .info { margin: 25px 0; position: relative; z-index: 2; } 
-        .info-item { 
-            display: flex; 
-            padding: 14px; 
-            margin: 12px 0;
-            background: rgba(0, 30, 60, 0.7);
-            border-radius: 12px;
-            border-right: 3px solid #006400;
-            transition: 0.3s;
-        } 
-        .info-item:hover { 
-            background: rgba(0, 30, 60, 0.9);
-            transform: translateX(-5px);
-            box-shadow: 0 0 20px rgba(0, 100, 0, 0.5);
-        }
-        .label { font-weight: bold; color: #90e0ef; min-width: 80px; font-size: 14px; } 
-        .value { 
-            direction: ltr; 
-            text-align: left; 
-            flex: 1; 
-            color: #caf0f8; 
-            word-break: break-all;
-            font-size: 14px;
-        }
-        
-        .contact-form {
-            background: rgba(0, 30, 60, 0.7);
-            padding: 20px;
-            border-radius: 15px;
-            margin: 25px 0;
-            position: relative;
-            z-index: 2;
-        }
-        .contact-form h3 {
-            color: #90e0ef;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        .form-input {
-            width: 100%;
-            padding: 12px;
-            margin: 8px 0;
-            background: rgba(0,0,0,0.4);
-            border: 1px solid #006400;
-            border-radius: 8px;
-            color: white;
-            font-family: inherit;
-        }
-        .form-btn {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(135deg, #006400, #228B22);
-            border: none;
-            border-radius: 8px;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .form-btn:active { transform: scale(0.95); }
-        
-        .social-links { 
-            display: flex; 
-            justify-content: center; 
-            gap: 15px; 
-            margin-top: 35px; 
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 2;
-        } 
-        
-        .social-btn { 
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white; 
-            text-decoration: none; 
-            font-size: 24px;
-            transition: 0.3s;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.6);
-            border: 2px solid rgba(255,255,255,0.1);
-        } 
-        .social-btn:active { animation: btnBlast 0.3s; }
-        @keyframes btnBlast {
-            0% { transform: scale(1); }
-            50% { transform: scale(0.8); }
-            100% { transform: scale(1); }
-        }
-        
-        .social-btn:hover { 
-            transform: translateY(-8px) scale(1.15);
-            box-shadow: 0 0 30px currentColor;
-        }
-        
-        .facebook { background: linear-gradient(135deg, #1877f2, #0d5bdd); }
-        .instagram { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-        .whatsapp { background: linear-gradient(135deg, #25d366, #128c7e); }
-        .tiktok { background: #000000; }
-        .snapchat { background: linear-gradient(135deg, #fffc00, #fffc00); color: #000; }
-        .pmln { background: linear-gradient(135deg, #006400, #228B22); }
-        
-        .website-footer {
-            text-align: center; 
-            margin-top: 25px; 
-            padding-top: 15px;
-            border-top: 2px solid rgba(0, 100, 0, 0.4);
-            position: relative; 
-            z-index: 2;
-        }
-        .website-footer a {
-            color: #4cc9f0; 
-            font-size: 15px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .footer { 
-            text-align: center; 
-            margin-top: 10px; 
-            color: #4cc9f0; 
-            font-size: 13px; 
-            position: relative; 
-            z-index: 2; 
-        }
-        
-        @media (max-width: 480px) {
-            .card { padding: 30px 15px; }
-            h1 { font-size: 26px; }
-            .leader-img { width: 70px; height: 70px; }
-            .roaring-lion { width: 55px; height: 55px; }
-            .pakistan-flag, .kashmir-flag { width: 80px; height: 50px; }
-            .lion-roar { width: 150px; height: 150px; }
-            .info-item { padding: 12px; }
-            .label { min-width: 70px; font-size: 13px; }
-            .value { font-size: 13px; }
-            .profile-wrapper { width: 140px; height: 140px; }
-            .profile-img { width: 120px; height: 120px; }
-            .profile-glow { width: 140px; height: 140px; }
-        }
-    </style>
-</head>
-<body>
-    <button class="vote-btn" onclick="playVoteSlogan()">🔊</button>
-    <audio id="voteAudio">
-        <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
-    </audio>
-
-    <div class="loader">
-        <div class="lion-roar"></div>
-        <p class="loader-text">PMLN Youth Wing Loading...</p>
-    </div>
-
-    <div class="pakistan-flag"></div>
-    <div class="kashmir-flag"></div>
-
-    <div class="container">
-        <div class="card">
-            <div class="leaders-row">
-                <img src="https://i.imgur.com/mQzKQmW.jpg" alt="Maryam Nawaz" class="leader-img">
-                <img src="https://i.imgur.com/nQzKQmW.jpg" alt="Shehbaz Sharif" class="leader-img">
-                <img src="https://i.imgur.com/pQzKQmW.jpg" alt="Nawaz Sharif" class="leader-img">
-            </div>
-            
-            <div class="roaring-lion"></div>
-            
-            <div class="profile-wrapper">
-                <div class="profile-glow"></div>
-                <img src="profile.jpg" alt="Raja Usman Asghar" class="profile-img">
-            </div>
-            
-            <h1 id="typed-name"></h1>
-            <p class="title">PMLN | Youth Wing | Mirpur Azad Kashmir</p>
-            
-            <div class="pmln-section">
-                <h3 style="color: #90e0ef; margin-bottom: 10px;">پاکستان مسلم لیگ ن</h3>
-                <div class="pmln-logo"></div>
-                <div class="flags">
-                    <div class="flag-img pak-flag"></div>
-                    <div class="flag-img pmln-flag"></div>
-                    <div class="flag-img kashmir-flag-small"></div>
-                </div>
-                <div class="tiger"></div>
-            </div>
-            
-            <div class="info">
-                <div class="info-item">
-                    <span class="label">نام:</span>
-                    <span class="value">Raja Usman Asghar</span>
-                </div>
-                <div class="info-item">
-                    <span class="label">شہر:</span>
-                    <span class="value">Mirpur, Azad Kashmir</span>
-                </div>
-                <div class="info-item">
-                    <span class="label">فون:</span>
-                    <span class="value">03107387329</span>
-                </div>
-                <div class="info-item">
-                    <span class="label">ای میل:</span>
-                    <span class="value">rajausmanasghar71@gmail.com</span>
-                </div>
-                <div class="info-item">
-                    <span class="label">پارٹی:</span>
-                    <span class="value">PMLN - پاکستان مسلم لیگ ن</span>
-                </div>
-            </div>
-            
-            <div class="contact-form">
-                <h3>رابطہ کریں</h3>
-                <input type="text" class="form-input" placeholder="آپ کا نام">
-                <input type="email" class="form-input" placeholder="ای میل">
-                <textarea class="form-input" rows="3" placeholder="پیغام"></textarea>
-                <button class="form-btn" onclick="alert('شکریہ! جلد رابطہ کریں گے')">بھیجیں</button>
-            </div>
-            
-            <div class="social-links">
-                <a href="https://www.facebook.com/rajausmanasghar.736" target="_blank" class="social-btn facebook">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://www.instagram.com/rajausman_736?igsh=MWdqamduanhncTlzbw==" target="_blank" class="social-btn instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://wa.me/923427126736" target="_blank" class="social-btn whatsapp">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                <a href="https://www.tiktok.com/@rajausman_736?_r=1&_t=ZS-969iDSSW7lN" target="_blank" class="social-btn tiktok">
-                    <i class="fab fa-tiktok"></i>
-                </a>
-                <a href="https://www.snapchat.com/add/rajausman_736?share_id=oMNTOHNwMek&locale=en-PK" target="_blank" class="social-btn snapchat">
-                    <i class="fab fa-snapchat-ghost"></i>
-                </a>
-                <a href="https://pmln.org" target="_blank" class="social-btn pmln">
-                    🐅
-                </a>
-            </div>
-            
-            <div class="website-footer">
-                <a href="https://pmln.org" target="_blank">Official Website: pmln.org</a>
-            </div>
-            
-            <div class="footer">
-                © 2026 Raja Usman Asghar | PMLN Youth Wing | All Rights Reserved
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const nameText = "Raja Usman Asghar";
-        let i = 0;
-        const typedName = document.getElementById('typed-name');
-        typedName.classList.add('typing');
-        
-        function typeWriter() {
-            if (i < nameText.length) {
-                typedName.textContent += nameText.charAt(i);
-                i++;
-                setTimeout(typeWriter, 150);
-            } else {
-                typedName.classList.remove('typing');
-            }
-        }
-        setTimeout(typeWriter, 3200);
-
-        function playVoteSlogan() {
-            const audio = document.getElementById('voteAudio');
-            audio.play();
-            navigator.vibrate(200);
-        }
-    </script>
-</bo                <img src="https://i.imgur.com/nQzKQmW.jpg" alt="Shehbaz Sharif" class="leader-img">
-                <img src="https://i.imgur.com/pQzKQmW.jpg" alt="Nawaz Sharif" class="leader-img">
-            </div>
-            
-            <div class="roaring-lion"></div>
-            
-            <div class="profile-wrapper">
-                <div class="profile-glow"></div>
-                <img src="profile.jpg" alt="Raja Usman Asghar" class="profile-img">
-            </div>
-            
-            <h1 id="typed-name"></h1>
-            <p class="title">PMLN | Youth Wing | Mirpur Azad Kashmir</p>
-            
-            <div class="pmln-section">
-                <h3 style="color: #90e0ef; margin-bottom: 10px;">پاکستان مسلم لیگ ن</h3>
-                <div class="pmln-logo"></div>
-                <div class="flags">
-                    <div class="flag-img pak-flag"></div>
-                    <div class="flag-img pmln-flag"></div>
-                    <div class="flag-img kashmir-flag-small"></div>
-                </div>
-                <div class="tiger"></div>
-            </div>
-            
-            <div class="info">
-                <div class="info-item">
-                    <span class="label">نام:</span>
-                    <span class="value">Raja Usman Asghar</span>
-                </div>
-                <div class="info-item">
-                    <span class="label">شہر:</span>
-                    <span class="value">Mirpur, Azad Kashmir</span>
-                </div>
-                <div class="info-item">
-                    <span class="label">فون:</span>
-                    <span class="value">03107387329</span>
-                </div>
-                <div class="info-item">
-                    <span class="label">ای میل:</span>
-                    <span class="value">rajausmanasghar71@gmail.com</span>
-                </div>
-                <div class="info-item">
-                    <span class="label">پارٹی:</span>
-                    <span class="value">PMLN - پاکستان مسلم لیگ ن</span>
-                </div>
-            </div>
-            
-            <div class="contact-form">
-                <h3>رابطہ کریں</h3>
-                <input type="text" class="form-input" placeholder="آپ کا نام">
-                <input type="email" class="form-input" placeholder="ای میل">
-                <textarea class="form-input" rows="3" placeholder="پیغام"></textarea>
-                <button class="form-btn" onclick="alert('شکریہ! جلد رابطہ کریں گے')">بھیجیں</button>
-            </div>
-            
-            <div class="social-links">
-                <a href="https://www.facebook.com/rajausmanasghar.736" target="_blank" class="social-btn facebook">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://www.instagram.com/rajausman_736?igsh=MWdqamduanhncTlzbw==" target="_blank" class="social-btn instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://wa.me/923427126736" target="_blank" class="social-btn whatsapp">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                <a href="https://www.tiktok.com/@rajausman_736?_r=1&_t=ZS-969iDSSW7lN" target="_blank" class="social-btn tiktok">
-                    <i class="fab fa-tiktok"></i>
-                </a>
-                <a href="https://www.snapchat.com/add/rajausman_736?share_id=oMNTOHNwMek&locale=en-PK" target="_blank" class="social-btn snapchat">
-                    <i class="fab fa-snapchat-ghost"></i>
-                </a>
-                <a href="https://pmln.org" target="_blank" class="social-btn pmln">
-                    🐅
-                </a>
-            </div>
-            
-            <div class="website-footer">
-                <a href="https://pmln.org" target="_blank">Official Website: pmln.org</a>
-            </div>
-            
-            <div class="footer">
-                © 2026 Raja Usman Asghar | PMLN Youth Wing | All Rights Reserved
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const nameText = "Raja Usman Asghar";
-        let i = 0;
-        const typedName = document.getElementById('typed-name');
-        typedName.classList.add('typing');
-        
-        function typeWriter() {
-            if (i < nameText.length) {
-                typedName.textContent += nameText.charAt(i);
-                i++;
-                setTimeout(typeWriter, 150);
-            } else {
-                typedName.classList.remove('typing');
-            }
-        }
-        setTimeout(typeWriter, 3200);
-
-        function playVoteSlogan() {
-            const audio = document.getElementById('voteAudio');
-            audio.play();
-            navigator.vibrate(200);
-        }
-    </script>
-</body>
-</html>
+            width: 90px; height: 90px; margin: 0 auto 10px;
+            background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH5wMNDSgc7JJvHgAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAFElEQVR42u3XMQEAAAjDMO5/03cQkk6LuqoqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKio
