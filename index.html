@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raja Usman Asghar - Night Sea</title>
+    <title>Raja Usman Asghar - PMLN | Night Sea</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; } 
@@ -15,78 +15,78 @@
             padding: 20px;
             min-height: 100vh;
             background: #0a0a1a;
-            background: linear-gradient(to bottom, #0a0a1a, #000000);
             overflow-x: hidden;
             position: relative;
         }
 
-        .moon {
-            position: fixed;
-            top: 40px;
-            left: 30px;
-            width: 100px;
-            height: 100px;
-            background: #fefcd7;
-            border-radius: 50%;
-            box-shadow: 0 0 80px #fefcd7, 0 0 120px rgba(254, 252, 215, 0.5);
-            z-index: 1;
-        }
-
-        .stars {
+        /* PMLN Jalsa Background - Blur */
+        body::before {
+            content: '';
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 60%;
+            height: 100%;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/PML-N_Public_Gathering_in_Punjab.jpg/1280px-PML-N_Public_Gathering_in_Punjab.jpg') center/cover no-repeat;
+            filter: blur(8px) brightness(0.3);
             z-index: 0;
         }
-        .star {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            animation: twinkle 3s infinite;
-        }
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.4; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.2); }
-        }
-
-        .sea {
+        
+        /* PMLN Flags Waving on Top */
+        .pmln-flags {
             position: fixed;
-            bottom: 0;
+            top: 0;
             left: 0;
             width: 100%;
-            height: 200px;
-            background: linear-gradient(to top, #001e3c, #003a6b);
+            height: 150px;
             z-index: 1;
+            overflow: hidden;
+            pointer-events: none;
         }
-        .wave {
+        .flag-wave {
             position: absolute;
-            bottom: 100%;
+            font-size: 50px;
+            animation: waveFlag 3s ease-in-out infinite;
+        }
+        .flag-wave:nth-child(1) { left: 10%; top: 20px; animation-delay: 0s; }
+        .flag-wave:nth-child(2) { left: 30%; top: 40px; animation-delay: 0.5s; }
+        .flag-wave:nth-child(3) { left: 50%; top: 30px; animation-delay: 1s; }
+        .flag-wave:nth-child(4) { left: 70%; top: 50px; animation-delay: 1.5s; }
+        .flag-wave:nth-child(5) { left: 90%; top: 25px; animation-delay: 2s; }
+        
+        @keyframes waveFlag {
+            0%, 100% { transform: translateY(0) rotate(-8deg); }
+            50% { transform: translateY(-15px) rotate(8deg); }
+        }
+
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
             left: 0;
-            width: 200%;
-            height: 120px;
-            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg"><path fill="%23003a6b" fill-opacity="1" d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,133.3C672,117,768,139,864,165.3C960,192,1056,224,1152,218.7C1248,213,1344,171,1392,149.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-            animation: wave 8s linear infinite;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            animation: fadeOut 0.5s 2.5s forwards;
         }
-        .wave:nth-child(2) {
-            animation-delay: -4s;
-            opacity: 0.5;
-            bottom: 90%;
-            height: 140px;
+        .lion-roar {
+            font-size: 80px;
+            animation: roar 1s infinite;
         }
-        .wave:nth-child(3) {
-            animation-delay: -2s;
-            opacity: 0.3;
-            bottom: 80%;
-            height: 160px;
+        @keyframes roar {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
         }
-        @keyframes wave {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+        @keyframes fadeOut {
+            to { opacity: 0; visibility: hidden; }
         }
         
-        .container { max-width: 700px; margin: 40px auto; position: relative; z-index: 10; } 
+        .container { max-width: 750px; margin: 40px auto; position: relative; z-index: 10; } 
         
         .card { 
             background: rgba(5, 10, 25, 0.9); 
@@ -96,73 +96,46 @@
             box-shadow: 0 15px 50px rgba(0,0,0,0.9); 
             position: relative;
             overflow: hidden;
+            border: 2px solid rgba(0, 100, 0, 0.5);
         }
         
-        /* 1. Multi-Color Corner Shine Animation */
-        .corner {
+        /* PMLN Leaders Background */
+        .leaders-bg {
             position: absolute;
-            width: 80px;
-            height: 80px;
-            z-index: 2;
-        }
-        .corner::before {
-            content: '';
-            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            border: 3px solid;
-            animation: cornerShine 4s infinite;
-        }
-        .corner-tl { top: 0; left: 0; }
-        .corner-tl::before { 
-            border-color: #ff006e; 
-            border-right: none; 
-            border-bottom: none; 
-            border-radius: 20px 0 0 0;
-            animation-delay: 0s;
-        }
-        .corner-tr { top: 0; right: 0; }
-        .corner-tr::before { 
-            border-color: #3a86ff; 
-            border-left: none; 
-            border-bottom: none; 
-            border-radius: 0 20px 0 0;
-            animation-delay: 1s;
-        }
-        .corner-bl { bottom: 0; left: 0; }
-        .corner-bl::before { 
-            border-color: #06ffa5; 
-            border-right: none; 
-            border-top: none; 
-            border-radius: 0 0 0 20px;
-            animation-delay: 2s;
-        }
-        .corner-br { bottom: 0; right: 0; }
-        .corner-br::before { 
-            border-color: #ffbe0b; 
-            border-left: none; 
-            border-top: none; 
-            border-radius: 0 0 20px 0;
-            animation-delay: 3s;
+            opacity: 0.08;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Nawaz_Sharif_in_2015.jpg/200px-Nawaz_Sharif_in_2015.jpg') left top no-repeat,
+                        url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Maryam_Nawaz_in_2016.jpg/200px-Maryam_Nawaz_in_2016.jpg') center top no-repeat,
+                        url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Shehbaz_Sharif_in_2022.jpg/200px-Shehbaz_Sharif_in_2022.jpg') right top no-repeat;
+            background-size: 33% auto;
+            z-index: 0;
+            pointer-events: none;
         }
         
-        @keyframes cornerShine {
-            0%, 100% { 
-                box-shadow: 0 0 10px currentColor; 
-                opacity: 0.6; 
-            }
-            50% { 
-                box-shadow: 0 0 30px currentColor, 0 0 50px currentColor; 
-                opacity: 1; 
-            }
+        /* Roaring Lion Animation */
+        .roaring-lion {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 40px;
+            z-index: 3;
+            animation: lionRoar 3s infinite;
+        }
+        @keyframes lionRoar {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.2) rotate(-5deg); }
+            75% { transform: scale(1.2) rotate(5deg); }
         }
         
-        /* 2. Profile Pic Unique Shine */
         .profile-wrapper {
             position: relative;
             width: 160px;
             height: 160px;
             margin: 0 auto 20px;
+            z-index: 2;
         }
         .profile-img { 
             width: 140px; 
@@ -171,18 +144,20 @@
             position: absolute;
             top: 10px;
             left: 10px;
-            border: 3px solid rgba(255,255,255,0.2);
+            border: 3px solid rgba(0, 100, 0, 0.5);
             object-fit: cover;
             object-position: center top;
             z-index: 2;
         }
+        
+        /* Profile Pic Red + Blue Light Animation */
         .profile-glow {
             position: absolute;
             width: 160px;
             height: 160px;
             border-radius: 50%;
-            background: conic-gradient(from 0deg, #ff006e, #8338ec, #3a86ff, #06ffa5, #ffbe0b, #ff006e);
-            animation: spinGlow 3s linear infinite, pulseGlow 2s ease-in-out infinite;
+            background: conic-gradient(from 0deg, #ff0000, #ff0000, #0066ff, #0066ff, #ff0000);
+            animation: spinGlow 2s linear infinite, pulseGlow 1.5s ease-in-out infinite;
             z-index: 1;
         }
         
@@ -191,8 +166,14 @@
             100% { transform: rotate(360deg); }
         }
         @keyframes pulseGlow {
-            0%, 100% { filter: blur(8px) brightness(1); }
-            50% { filter: blur(12px) brightness(1.5); }
+            0%, 100% { 
+                filter: blur(10px) brightness(1.2); 
+                box-shadow: 0 0 40px #ff0000, 0 0 60px #0066ff;
+            }
+            50% { 
+                filter: blur(15px) brightness(1.8); 
+                box-shadow: 0 0 60px #ff0000, 0 0 80px #0066ff;
+            }
         }
         
         h1 { 
@@ -200,24 +181,71 @@
             color: #fff; 
             margin-bottom: 10px; 
             font-size: 32px; 
-            text-shadow: 0 0 20px rgba(58, 134, 255, 0.8); 
+            text-shadow: 0 0 20px rgba(0, 100, 0, 0.8);
+            min-height: 45px;
+            z-index: 2;
+            position: relative;
         } 
-        .title { text-align: center; color: #8ecae6; margin-bottom: 30px; font-size: 15px; } 
+        /* Typing Effect */
+        .typing::after {
+            content: '|';
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
         
-        .info { margin: 25px 0; } 
+        .title { text-align: center; color: #8ecae6; margin-bottom: 30px; font-size: 15px; position: relative; z-index: 2; } 
+        
+        /* PMLN Section */
+        .pmln-section {
+            background: rgba(0, 100, 0, 0.4);
+            border: 2px solid #006400;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 25px 0;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        .pmln-logo {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 10px;
+        }
+        .flags {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 15px 0;
+            font-size: 40px;
+        }
+        .flag {
+            animation: waveFlag 2s ease-in-out infinite;
+        }
+        .tiger {
+            font-size: 50px;
+            animation: tigerBounce 1.5s infinite;
+        }
+        @keyframes tigerBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .info { margin: 25px 0; position: relative; z-index: 2; } 
         .info-item { 
             display: flex; 
             padding: 14px; 
             margin: 12px 0;
             background: rgba(0, 30, 60, 0.6);
             border-radius: 12px;
-            border-right: 3px solid #3a86ff;
+            border-right: 3px solid #006400;
             transition: 0.3s;
         } 
         .info-item:hover { 
             background: rgba(0, 30, 60, 0.9);
             transform: translateX(-5px);
-            box-shadow: 0 0 20px rgba(58, 134, 255, 0.4);
+            box-shadow: 0 0 20px rgba(0, 100, 0, 0.4);
         }
         .label { font-weight: bold; color: #90e0ef; min-width: 80px; font-size: 14px; } 
         .value { 
@@ -229,12 +257,53 @@
             font-size: 14px;
         }
         
+        /* Contact Form */
+        .contact-form {
+            background: rgba(0, 30, 60, 0.6);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 25px 0;
+            position: relative;
+            z-index: 2;
+        }
+        .contact-form h3 {
+            color: #90e0ef;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid #006400;
+            border-radius: 8px;
+            color: white;
+            font-family: inherit;
+        }
+        .form-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #006400, #228B22);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .form-btn:active {
+            transform: scale(0.95);
+        }
+        
         .social-links { 
             display: flex; 
             justify-content: center; 
             gap: 15px; 
             margin-top: 35px; 
             flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
         } 
         
         .social-btn { 
@@ -250,7 +319,18 @@
             transition: 0.3s;
             box-shadow: 0 5px 20px rgba(0,0,0,0.6);
             border: 2px solid rgba(255,255,255,0.1);
+            position: relative;
+            overflow: hidden;
         } 
+        /* Button Click Animation */
+        .social-btn:active {
+            animation: btnBlast 0.3s;
+        }
+        @keyframes btnBlast {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.8); }
+            100% { transform: scale(1); }
+        }
         
         .social-btn:hover { 
             transform: translateY(-8px) scale(1.15);
@@ -262,48 +342,70 @@
         .whatsapp { background: linear-gradient(135deg, #25d366, #128c7e); }
         .tiktok { background: #000000; }
         .snapchat { background: linear-gradient(135deg, #fffc00, #fffc00); color: #000; }
+        .pmln { background: linear-gradient(135deg, #006400, #228B22); }
         
-        .footer { text-align: center; margin-top: 25px; color: #4cc9f0; font-size: 13px; }
+        .footer { text-align: center; margin-top: 25px; color: #4cc9f0; font-size: 13px; position: relative; z-index: 2; }
         
         @media (max-width: 480px) {
             .card { padding: 30px 15px; }
-            h1 { font-size: 28px; }
-            .moon { width: 70px; height: 70px; left: 20px; top: 30px; }
+            h1 { font-size: 26px; }
             .info-item { padding: 12px; }
             .label { min-width: 70px; font-size: 13px; }
             .value { font-size: 13px; }
             .profile-wrapper { width: 140px; height: 140px; }
             .profile-img { width: 120px; height: 120px; }
             .profile-glow { width: 140px; height: 140px; }
+            .roaring-lion { font-size: 30px; }
+            .flag-wave { font-size: 35px; }
         }
     </style>
 </head>
 <body>
-    <div class="moon"></div>
-    <div class="stars" id="stars"></div>
-    
-    <div class="sea">
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
+    <!-- Loading Animation -->
+    <div class="loader">
+        <div class="lion-roar">🦁</div>
+        <p style="color: white; margin-top: 20px;">Loading...</p>
+    </div>
+
+    <!-- PMLN Waving Flags on Top -->
+    <div class="pmln-flags">
+        <span class="flag-wave">🏴</span>
+        <span class="flag-wave">🇵🇰</span>
+        <span class="flag-wave">🏴</span>
+        <span class="flag-wave">🇵🇰</span>
+        <span class="flag-wave">🏴</span>
     </div>
 
     <div class="container">
         <div class="card">
-            <!-- Multi-Color Corners -->
-            <div class="corner corner-tl"></div>
-            <div class="corner corner-tr"></div>
-            <div class="corner corner-bl"></div>
-            <div class="corner corner-br"></div>
+            <div class="leaders-bg"></div>
             
-            <!-- Profile Pic Unique Shine -->
+            <!-- Roaring Lion -->
+            <div class="roaring-lion">🦁</div>
+            
             <div class="profile-wrapper">
                 <div class="profile-glow"></div>
                 <img src="profile.jpg" alt="Raja Usman Asghar" class="profile-img">
             </div>
             
-            <h1>Raja Usman Asghar</h1>
-            <p class="title">Student | Web Developer | Mirpur Azad Kashmir</p>
+            <h1 id="typed-name"></h1>
+            <p class="title">pmln | Youth Wing | Mirpur Azad Kashmir</p>
+            
+            <!-- PMLN Section -->
+            <div class="pmln-section">
+                <h3 style="color: #90e0ef; margin-bottom: 10px;">پاکستان مسلم لیگ ن</h3>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Pakistan_Muslim_League_%28N%29_logo.svg/200px-Pakistan_Muslim_League_%28N%29_logo.svg.png" alt="PMLN Logo" class="pmln-logo">
+                <div class="flags">
+                    <span class="flag">🇵🇰</span>
+                    <span class="flag">🏴</span>
+                </div>
+                <div class="tiger">🐅</div>
+                <p style="margin-top: 10px;">
+                    <a href="https://pmln.org" target="_blank" style="color: #90e0ef; text-decoration: none;">
+                        Official Website: pmln.org
+                    </a>
+                </p>
+            </div>
             
             <div class="info">
                 <div class="info-item">
@@ -311,17 +413,30 @@
                     <span class="value">Raja Usman Asghar</span>
                 </div>
                 <div class="info-item">
-                    <span class="label">عمر:</span>
-                    <span class="value">26 Years</span>
-                </div>
-                <div class="info-item">
                     <span class="label">شہر:</span>
                     <span class="value">Mirpur, Azad Kashmir</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">فون:</span>
+                    <span class="value">03107387329</span>
                 </div>
                 <div class="info-item">
                     <span class="label">ای میل:</span>
                     <span class="value">rajausmanasghar71@gmail.com</span>
                 </div>
+                <div class="info-item">
+                    <span class="label">پارٹی:</span>
+                    <span class="value">PMLN - پاکستان مسلم لیگ ن</span>
+                </div>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <h3>رابطہ کریں</h3>
+                <input type="text" class="form-input" placeholder="آپ کا نام">
+                <input type="email" class="form-input" placeholder="ای میل">
+                <textarea class="form-input" rows="3" placeholder="پیغام"></textarea>
+                <button class="form-btn" onclick="alert('شکریہ! جلد رابطہ کریں گے')">بھیجیں</button>
             </div>
             
             <div class="social-links">
@@ -340,27 +455,34 @@
                 <a href="https://www.snapchat.com/add/rajausman_736?share_id=oMNTOHNwMek&locale=en-PK" target="_blank" class="social-btn snapchat">
                     <i class="fab fa-snapchat-ghost"></i>
                 </a>
+                <a href="https://pmln.org" target="_blank" class="social-btn pmln">
+                    🐅
+                </a>
             </div>
             
             <div class="footer">
-                © 2026 Raja Usman Asghar | All Rights Reserved
+                © 2026 Raja Usman Asghar | PMLN | All Rights Reserved
             </div>
         </div>
     </div>
 
     <script>
-        const starsContainer = document.getElementById('stars');
-        for(let i = 0; i < 80; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            const size = Math.random() * 4 + 2;
-            star.style.width = size + 'px';
-            star.style.height = size + 'px';
-            star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 100 + '%';
-            star.style.animationDelay = Math.random() * 3 + 's';
-            starsContainer.appendChild(star);
+        // Typing Effect
+        const nameText = "Raja Usman Asghar";
+        let i = 0;
+        const typedName = document.getElementById('typed-name');
+        typedName.classList.add('typing');
+        
+        function typeWriter() {
+            if (i < nameText.length) {
+                typedName.textContent += nameText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 150);
+            } else {
+                typedName.classList.remove('typing');
+            }
         }
+        setTimeout(typeWriter, 2800);
     </script>
 </body>
 </html>
